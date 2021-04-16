@@ -26,7 +26,7 @@ namespace Notes.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = "User ID=postgres;Password=postgres;Host=database-notes.cxglpfkdaakh.ap-south-1.rds.amazonaws.com;Port=5434;Database=notes;";
+            var connection = Configuration.GetConnectionString("DatabaseConnectionString");
             services.AddScoped<DataManager>(x => new DataManager(connection));
             services.AddControllers();
         }
